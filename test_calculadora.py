@@ -6,7 +6,7 @@ def test_suma():
 
 def test_resta():
     assert resta(5, 3) == 2  
-    #assert resta(5, 4) == 0         #Error hecho a proposito
+    assert resta(5, 4) == 0         #Error hecho a proposito
 
 def test_multiplicacion():
     assert multiplicacion(4, 3) == 12
