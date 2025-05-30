@@ -31,18 +31,30 @@ jobs:
           export PYTHONPATH="${PWD}"
           python -m pytest 
 
-  notify_slack:
+  notify-slack-success:
     needs: build
-    if: always()
+    if: success()
     runs-on: ubuntu-latest
     steps:
-      - name: Notificar a Slack
-        uses: rtCamp/action-slack-notify@v2
-        with:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: |
-            *CI Calculadora* — Repo `${{ github.repository }}`
-            Rama: `${{ github.ref_name }}`
-            Estado: *${{ needs.build.result }}*
-          SLACK_USERNAME: 'IC Bot'
-          SLACK_COLOR: ${{ needs.build.result == 'success' && 'good' || 'danger' }}
+      - name: Notificar a Slack si fue exitosa la ejecución de la build 
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{
+            "text":" *La build pasó correctamente!* \nRepositorio: '${{ github.repository }}'\nCommit: '${{ github.sha }}'\nAutor: '${{ github.actor }}'"
+          }' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  notify-slack-on-failure:
+    needs: build
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notificar a Slack si falló la ejecución de la build
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{
+            "text":" *La build falló.*\nRepositorio: '${{ github.repository }}'\nCommit: '${{ github.sha }}'\nAutor: '${{ github.actor }}'"
+          }' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
+
+
