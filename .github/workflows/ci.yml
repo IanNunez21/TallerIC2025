@@ -30,3 +30,19 @@ jobs:
         run: |
           export PYTHONPATH="${PWD}"
           python -m pytest 
+
+  notify_slack:
+    needs: build
+    runs-on: ubuntu-latest
+    if: always()           #se ejecuta tanto si la build pasa como si falla
+    steps:
+      - name: Notificar a Slack
+        uses: rtCamp/action-slack-notify@v2
+        with:
+          webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}  #URL del webhook de Slack
+          username: 'IC Bot'
+          message: |
+            *CI Calculadora* - Repo: `${{ github.repository }}`
+            Rama: `${{ github.ref_name }}`
+            Estado: *${{ needs.build.result }}*
+          color: ${{ needs.build.result == 'success' && 'good' || 'danger' }}
