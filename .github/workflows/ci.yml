@@ -40,7 +40,7 @@ jobs:
         run: |
           curl -X POST -H 'Content-type: application/json' \
           --data '{
-            "text":" *La build pasó correctamente!* \nRepositorio: '${{ github.repository }}'\nCommit: '${{ github.sha }}'\nAutor: '${{ github.actor }}'"
+            "text":"*🎉 ¡Build completada exitosamente!* 🎉\n• Repositorio: `${{ github.repository }}`\n• Branch: `${{ github.ref_name }}`\n• Commit: `${{ github.sha }}`\n• Autor: `${{ github.actor }}`"
           }' \
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
@@ -53,7 +53,7 @@ jobs:
         run: |
           curl -X POST -H 'Content-type: application/json' \
           --data '{
-            "text":" *La build falló.*\nRepositorio: '${{ github.repository }}'\nCommit: '${{ github.sha }}'\nAutor: '${{ github.actor }}'"
+            "text":"*❌ ¡La build ha fallado!* ⚠️\n• Repositorio: `${{ github.repository }}`\n• Branch: `${{ github.ref_name }}`\n• Commit: `${{ github.sha }}`\n• Autor: `${{ github.actor }}`"
           }' \
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
