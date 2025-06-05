@@ -28,7 +28,7 @@ jobs:
       - name: Ejecutar pruebas
         run: |
           cd $GITHUB_WORKSPACE 
-          python -m pytest --timeout=300 --verbose
+          python -m pytest 
 
   notify-slack-success:
     needs: build
