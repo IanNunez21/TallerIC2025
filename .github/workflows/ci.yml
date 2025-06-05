@@ -2,8 +2,7 @@ name: CI Calculadora #Nombre del flujo de trabajo
 
 #Esto especifica cuando se ejecutará el flujo de trabajo
 on:
-  push:                    #Se activa cuando se recibe un push al repositorio
-    branches: ["*"]       
+  push:              
   pull_request:            #Se activa cuando se crea un pull request
     branches: [main]       #Especifica la rama a la que se aplicará el flujo de trabajo
 
