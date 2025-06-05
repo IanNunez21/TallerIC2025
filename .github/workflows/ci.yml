@@ -27,8 +27,8 @@ jobs:
 
       - name: Ejecutar pruebas
         run: |
-          export PYTHONPATH="${PWD}"
-          python -m pytest 
+          cd $GITHUB_WORKSPACE 
+          python -m pytest --timeout=300 --verbose
 
   notify-slack-success:
     needs: build
