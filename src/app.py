@@ -2,7 +2,6 @@ import os
 from flask import Flask, render_template, request, jsonify
 from src.calculadora import suma, resta, multiplicacion, division
 
-#comentario de prueba para Jira de nuevo ffff
 
 # Apunta al templates que está en ../templates
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, 'templates'))
