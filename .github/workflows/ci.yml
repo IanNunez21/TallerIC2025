@@ -11,7 +11,7 @@ jobs:
   build:                 
     runs-on: ubuntu-22.04        #Especifica el sistema operativo en el que se ejecutará el trabajo
 
-    steps:                #Pasos a seguir en el trabajo
+    steps:                
       - name: Checkout del repositorio
         uses: actions/checkout@v4  #Clona el repositorio en el entorno de ejecución
 
