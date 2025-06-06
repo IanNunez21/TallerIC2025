@@ -8,7 +8,7 @@ on:
 
 #Esto define que trabajos se ejecutarán en el flujo de trabajo
 jobs:
-  build:                 #Nombre del trabajo
+  build:                 
     runs-on: ubuntu-22.04        #Especifica el sistema operativo en el que se ejecutará el trabajo
 
     steps:                #Pasos a seguir en el trabajo
