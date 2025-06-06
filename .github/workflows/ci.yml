@@ -1,4 +1,4 @@
-name: CI Calculadora #Nombre del flujo de trabaj
+name: CI Calculadora #Nombre del flujo de trabajo
 
 #Esto especifica cuando se ejecutará el flujo de trabajo
 on:
