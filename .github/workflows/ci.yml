@@ -50,7 +50,8 @@ jobs:
         run: docker build -t calculadora-web:${{ github.sha }} .
 
       - name: Subir la imagen Docker a GitHub Container Registry
-        run: docker push ghcr.io/${{ github.repository_owner }}/calculadora-web:${{ github.sha }}
+        run: docker push ghcr.io/iannunez21/calculadora-web-image:${{ github.sha }}
+
 
   deploy_render:
     needs: containerization
