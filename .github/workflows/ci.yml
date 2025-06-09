@@ -23,12 +23,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt  
 
-      - name: Establecer PYTHONPATH
-        run: echo "PYTHONPATH=$(pwd)/src" >> $GITHUB_ENV  
-
-      - name: Ejecutar tests
+      - name: Ejecutar pruebas
         run: |
-          pytest 
+          export PYTHONPATH="${PWD}"
+          python -m pytest 
 
   containerization:
     needs: build
