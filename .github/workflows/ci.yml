@@ -84,3 +84,16 @@ jobs:
             "text":"*❌ ¡La build ha fallado!* ⚠️\n• Repositorio: `${{ github.repository }}`\n• Branch: `${{ github.ref_name }}`\n• Commit: `${{ github.sha }}`\n• Autor: `${{ github.actor }}`"
           }' \
           ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  notify-slack-deploy-success:
+      needs: deploy_render
+      if: success()  
+      runs-on: ubuntu-22.04
+      steps:
+        - name: Notificar a Slack si fue exitoso el despliegue en Render
+          run: |
+            curl -X POST -H 'Content-type: application/json' \
+            --data '{
+              "text":"*🎉 ¡Despliegue exitoso en Render!* 🎉\n• Enlace: https://talleric2025.onrender.com"
+            }' \
+            ${{ secrets.SLACK_WEBHOOK_URL }}
