@@ -94,6 +94,6 @@ jobs:
           run: |
             curl -X POST -H 'Content-type: application/json' \
             --data '{
-              "text":"*🎉 ¡Despliegue exitoso en Render!* 🎉\n• Enlace: https://talleric2025.onrender.com"
+              "text":"*🎉 ¡Despliegue exitoso en Render!* 🎉\n• Enlace: https://calculadora-web-latest.onrender.com/"
             }' \
             ${{ secrets.SLACK_WEBHOOK_URL }}
