@@ -39,8 +39,17 @@ jobs:
       - name: Configurar Docker Buildx
         uses: docker/setup-buildx-action@v2  # Configura Docker Buildx
 
+      - name: Loguearse en Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}  # Tu usuario de Docker Hub
+          password: ${{ secrets.DOCKER_PASSWORD }}  # El token de acceso de Docker Hub
+
       - name: Construir la imagen Docker
-        run: docker build -t calculadora-web:${{ github.sha }} .  # Construye la imagen Docker
+        run: docker build -t iannunez21/calculadora-web:${{ github.sha }} .  # Construir la imagen Docker
+
+      - name: Subir la imagen Docker a Docker Hub
+        run: docker push iannunez21/calculadora-web:${{ github.sha }}  # Subir la imagen a Docker Hub
 
   deploy_render:
     needs: containerization
