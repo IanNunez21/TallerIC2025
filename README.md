@@ -44,8 +44,8 @@ El archivo (`.github/workflows/ci.yml`) define los siguientes jobs:
 4. **notify-slack-deploy-success** / **notify-slack-on-failure**: envían notificaciones a Slack.
 
 ## Despliegue en Render
-1. Subir la imagen a Docker Hub: `docker push iannunez21/calculadora-web:latest`.
-2. En Render, crear un **Web Service** → **Existing Image** → `docker.io/iannunez21/calculadora-web:latest`.
+1. Subir la imagen a Docker Hub: `docker push tu_usuario/calculadora-web:latest`.
+2. En Render, crear un **Web Service** → **Existing Image** → `docker.io/tu_usuario/calculadora-web:latest`.
 3. Si la imagen es privada, configurar credenciales (`DOCKER_USERNAME` y `DOCKER_PASSWORD`).
 4. Usar el webhook (`RENDER_DEPLOY_HOOK_URL`) desde GitHub Actions.
 
