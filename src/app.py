@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request, jsonify
 from src.calculadora import suma, resta, multiplicacion, division
 
-# Apunta al templates que está en ../templates
+# Apunta al templates que está en ../templatesfdfdsfsdfsdfsdfsdfsdf
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, 'templates'))
 app = Flask(__name__, template_folder=template_dir)
 
