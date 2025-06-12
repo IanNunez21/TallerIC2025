@@ -8,7 +8,7 @@ def test_resta():
     assert resta(5, 3) == 2  
 
 def test_multiplicacion():
-    assert multiplicacion(4, 3) == 13
+    assert multiplicacion(4, 3) == 12
 
 def test_division():
     assert division(10, 2) == 5
