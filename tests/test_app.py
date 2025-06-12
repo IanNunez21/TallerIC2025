@@ -20,6 +20,10 @@ def test_post_resta(client):
     resp = client.post("/", data={"a": "10", "op": "-", "b": "5"})
     assert b"Resultado: 5.0" in resp.data
 
+def test_post_multiplicacion(client):
+    resp = client.post("/", data={"a": "10", "op": "*", "b": "5"})
+    assert b"Resultado: 50.0" in resp.data
+
 def test_post_division_zero(client):
     resp = client.post("/", data={"a": "1", "op": "/", "b": "0"})
     assert b"Error: Division por cero no es permitida" in resp.data
